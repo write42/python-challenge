@@ -1,7 +1,6 @@
 import os
-import sys
 import csv
-bank_csv = os.path.join('..','Resources','03-Python_Homework_Instruction_PyBank_Resources_budget_data')
+bank_csv = os.path.join('Resources','03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv')
 
 def budget(banks):
     months = banks[0]
