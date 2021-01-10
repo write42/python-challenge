@@ -5,15 +5,35 @@ poll_csv = os.path.join('Resources','03-Python_Homework_Instructions_PyPoll_Reso
 def polls(votes):
     total_votes = num_rows
     candidate = str(votes[2])
+    khan_votes = 0
+    correy_votes = 0
+    li_votes = 0
+    tooley_votes = 0
     #vote_per = (can_total/total_votes) * 100
     if candidate =="Khan":
-        print(f"{candidate}: {vote_per}% ()")
+        khan_votes += 1
+        khan_percent = (khan_votes/total_votes)*100
     elif candidate =="Correy":
-            print(f"{candidate}: {vote_per}% ()")
+        correy_votes += 1
+        correy_percent = (correy_votes/total_votes)*100
     elif candidate == "Li":
-                print(f"{candidate}: {vote_per}% ()")
+        li_votes += 1
+        li_percent = (li_votes/total_votes)*100
     elif candidate == "O'Tooley":
-                    print(f"{candidate} :{vote_per}% ()")
+        tooley_votes += 1
+        tooley_percent = (tooley_votes/total_votes)*100
+
+    
+    
+    
+ print("Election Results")
+ print("-------------------------")
+ print(f"Total Votes: {total_votes}")
+ print("-------------------------")
+ print(f"Khan: {khan_percent}% ({khan_votes})")
+ print(f"Correy: {correy_percent}% ({correy_votes})")
+ print(f"Li: {li_percent}% ({li_votes})")
+ print(f"O'Tooley: {tooley_percent}% ({tooley_votes})")
 
 
 with open(poll_csv,'r') as csvfile:
