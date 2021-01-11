@@ -21,19 +21,16 @@ def polls(votes):
         li_percent = (li_votes/total_votes)*100
     elif candidate == "O'Tooley":
         tooley_votes += 1
-        tooley_percent = (tooley_votes/total_votes)*100
-
-    
-    
-    
- print("Election Results")
- print("-------------------------")
- print(f"Total Votes: {total_votes}")
- print("-------------------------")
- print(f"Khan: {khan_percent}% ({khan_votes})")
- print(f"Correy: {correy_percent}% ({correy_votes})")
- print(f"Li: {li_percent}% ({li_votes})")
- print(f"O'Tooley: {tooley_percent}% ({tooley_votes})")
+        tooley_percent = (tooley_votes/total_votes)*100  
+  
+    print("Election Results")
+    print("-------------------------")
+    print(f"Total Votes: {total_votes}")
+    print("-------------------------")
+    print(f"Khan: {khan_percent}% ({khan_votes})")
+    print(f"Correy: {correy_percent}% ({correy_votes})")
+    print(f"Li: {li_percent}% ({li_votes})")
+    print(f"O'Tooley: {tooley_percent}% ({tooley_votes})")
 
 
 with open(poll_csv,'r') as csvfile:
