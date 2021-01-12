@@ -9,12 +9,11 @@ winner = []
 with open(poll_csv,'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
-    #candidate_vote = {}
     name_vote = {"Khan":0,"Correy":0,"Li":0,"O'Tooley":0}
 
     for row in csvreader:
         num_rows +=1
-
+        #Find percentages and amount of votes per candidate
         if row[2] == "Khan":
             name_vote["Khan"] += 1
             khan_percent = (name_vote["Khan"]/num_rows) * 100
