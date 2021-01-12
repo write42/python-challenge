@@ -6,53 +6,72 @@ khan_count = 0
 correy_count = 0
 li_count = 0
 tooley_count = 0
-# def polls(votes):
-#     total_votes = num_rows
-#     candidate = str(votes[2])
-#     khan_votes = 0
-#     correy_votes = 0
-#     li_votes = 0
-#     tooley_votes = 0
-#     vote_per = (can_total/total_votes) * 100
-#     if candidate =="Khan":
-#         khan_votes += 1
-#         khan_percent = (khan_votes/total_votes)*100
-#     elif candidate =="Correy":
-#         correy_votes += 1
-#         correy_percent = (correy_votes/total_votes)*100
-#     elif candidate == "Li":
-#         li_votes += 1
-#         li_percent = (li_votes/total_votes)*100
-#     elif candidate == "O'Tooley":
-#         tooley_votes += 1
-#         tooley_percent = (tooley_votes/total_votes)*100  
-  
-    # print("Election Results")
-    # print("-------------------------")
-    # print(f"Total Votes: {total_votes}")
-    # print("-------------------------")
-    # print(f"Khan: {khan_percent}% ({khan_votes})")
-    # print(f"Correy: {correy_percent}% ({correy_votes})")
-    # print(f"Li: {li_percent}% ({li_votes})")
-    # print(f"O'Tooley: {tooley_percent}% ({tooley_votes})")
+winner = []
+
 
 with open(poll_csv,'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
+    candidate = []
+    candidate_vote = {}
+    name_vote = {"Khan":0,"Correy":0,"Li":0,"O'Tooley":0}
+    #list out names
+    #put everything in a dictionary
+    #What should be the keys?
+    # Can_win = {"name":candidate,
+    #  "vote":{winner}}
+    #in dictionary, make key values the candidates names, match to their counts
+    #add winner in
+    # name_vote ={"khan":khan_count}
     for row in csvreader:
         num_rows +=1
+    #     if row[2] not in candidate_vote: 
+    #         dict[row[2]] = 0
+    #     dict[row[2]] = dict[row[2]] + 1
+    # count = [{}]
+
         if row[2] == "Khan":
-            khan_count += 1
-            khan_percent = (khan_count/num_rows) * 100
+            name_vote["Khan"] = name_vote["Khan"] + 1
+            khan_percent = (name_vote["Khan"]/num_rows) * 100
+            #winner = row[2]
         elif row[2] == "Correy":
-            correy_count +=1
-            correy_percent = (correy_count/num_rows) * 100
+            name_vote["Correy"] +=1
+            correy_percent = (name_vote["Correy"]/num_rows) * 100
         elif row[2] =="Li":
-            li_count += 1
-            li_percent = (li_count/num_rows) * 100
+            name_vote["Li"] += 1
+            li_percent = (name_vote["Li"]/num_rows) * 100
         elif row[2] == "O'Tooley":
-            tooley_count += 1
-            tooley_percent = (tooley_count/num_rows) * 100
+            name_vote["O'Tooley"] += 1
+            tooley_percent = (name_vote["O'Tooley"]/num_rows) * 100
+        winner = [khan_count,correy_count,li_count,tooley_count]
+        candidate = ["Khan","Correy","Li","O'Tooley"]
+    #complete list of candidates
+        #In for loop, highlight first name, ignore rest until encounter new name
+        #Every count for candidate 
+        #How to get winner from dictionary?
+        if row[2] not in candidate:
+            candidate.append(row[2])
+            max_win()
+print(max(name_vote,key = name_vote.get))
+print(candidate)
+print(winner)
+
+
+    #for i in candidate
+    #name_vote = {candidate[i]: winner[i]}
+        
+        
+    #complete list of candidates
+        #In for loop, highlight first name, ignore rest until encounter new name
+        #Every count for candidate 
+        #How to get winner from dictionary?
+#         if row[2] not in candidate:
+#             candidate.append(row[2])
+# print(candidate)
+# name_vote = {}
+#     for i in candidate
+#     name_vote = {candidate[i]: winner[i]}
+        
 
 print("Election Results")
 print("----------------------")
@@ -62,4 +81,6 @@ print(f"Khan: {round(khan_percent,3)}% ({khan_count})")
 print(f"Cooley: {round(correy_percent,3)}% ({correy_count})")
 print(f"Li: {round(li_percent,3)}% ({li_count})")
 print(f"O'Tooley: {round(tooley_percent,3)}% ({tooley_count})")
-print("-----------------------------------------------------")
+print("--------------------------")
+print(f"Winner: {max(name_vote,key=name_vote.get)}")
+print("--------------------------")
