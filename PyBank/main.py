@@ -16,7 +16,7 @@ with open(bank_csv, 'r') as csvfile:
         num_rows +=1
         date.append(row[0])
         profits.append(float(row[1]))
-
+    #Loop through list of profits
     for i in range(1,len(profits)):
         #Calculate change between one row and the previous one and fill list
         profits_change.append(profits[i]-profits[i-1])
